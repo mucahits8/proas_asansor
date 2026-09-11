@@ -100,7 +100,7 @@ main {
   position: fixed;
   top: 22px;
   left: 50%;
-  z-index: 30;
+  z-index: 50;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -212,20 +212,23 @@ main {
 
 .site-rail {
   position: fixed;
-  top: 150px;
-  left: max(22px, calc((100vw - 1280px) / 2));
+  top: 50%;
+  left: clamp(18px, 2.25vw, 42px);
   z-index: 20;
   display: grid;
-  grid-template-columns: 26px 1fr;
-  gap: 14px;
+  grid-template-columns: 26px 44px;
+  gap: 10px;
+  transform: translateY(-46%);
   color: rgba(248, 245, 234, 0.58);
+  pointer-events: none;
 }
 
 .rail-line {
   position: relative;
-  height: 390px;
+  height: min(48vh, 430px);
   width: 1px;
   background: linear-gradient(180deg, transparent, var(--line), transparent);
+  pointer-events: auto;
 }
 
 .rail-cabin {
@@ -251,26 +254,73 @@ main {
 
 .rail-floors {
   display: grid;
-  gap: 15px;
+  height: min(48vh, 430px);
+  align-content: space-between;
+  gap: 0;
   font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
   font-size: 0.72rem;
   text-transform: uppercase;
+  pointer-events: auto;
 }
 
 .rail-floors a {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
-  width: max-content;
+  width: 44px;
+  min-height: 20px;
+  border-radius: 999px;
+  color: rgba(248, 245, 234, 0.42);
+  transition:
+    color 240ms ease,
+    transform 240ms var(--ease-lift);
 }
 
 .rail-floors span {
-  color: var(--ink);
+  color: inherit;
   font-weight: 800;
 }
 
 .rail-floors small {
-  opacity: 0.58;
+  position: absolute;
+  left: 46px;
+  top: 50%;
+  width: max-content;
+  max-width: 110px;
+  transform: translate(-8px, -50%);
+  border: 1px solid rgba(248, 245, 234, 0.1);
+  border-radius: 999px;
+  background: rgba(7, 8, 7, 0.72);
+  padding: 5px 9px;
+  opacity: 0;
+  color: rgba(248, 245, 234, 0.66);
+  backdrop-filter: blur(12px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms var(--ease-lift);
+  pointer-events: none;
+}
+
+.rail-floors a::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  opacity: 0.55;
+}
+
+.rail-floors a:hover,
+.rail-floors a.is-active {
+  color: var(--accent);
+  transform: translateX(2px);
+}
+
+.rail-floors a:hover small,
+.site-rail:hover .rail-floors a.is-active small {
+  transform: translate(0, -50%);
+  opacity: 1;
 }
 
 .hero {
@@ -398,6 +448,7 @@ main {
 .shaft-wrap {
   position: relative;
   min-height: 620px;
+  --floor-travel: clamp(38px, 6vh, 62px);
 }
 
 .shaft {
@@ -426,13 +477,34 @@ main {
   animation: floor-pass 5.5s linear infinite;
 }
 
+.shaft::before,
+.shaft::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(242, 183, 5, 0.35), transparent);
+  opacity: 0.7;
+}
+
+.shaft::before {
+  left: 28%;
+}
+
+.shaft::after {
+  right: 28%;
+}
+
 .cabin {
   position: absolute;
+  z-index: 2;
   left: 18%;
   right: 18%;
-  top: 17%;
+  top: 8%;
   height: 168px;
-  transform: translateY(calc(var(--active-section) * 22px));
+  transform: translateY(calc(var(--active-section) * var(--floor-travel)));
   border: 1px solid rgba(248, 245, 234, 0.24);
   border-radius: 6px;
   background:
@@ -441,7 +513,19 @@ main {
   box-shadow:
     inset 0 0 42px rgba(242, 183, 5, 0.05),
     0 22px 70px rgba(0, 0, 0, 0.52);
-  transition: transform 900ms var(--ease-lift);
+  transition:
+    transform 760ms var(--ease-lift),
+    box-shadow 360ms ease,
+    filter 360ms ease;
+  will-change: transform;
+}
+
+.cabin-moving .cabin {
+  filter: saturate(1.1);
+  box-shadow:
+    inset 0 0 42px rgba(242, 183, 5, 0.08),
+    0 22px 84px rgba(242, 183, 5, 0.12),
+    0 22px 70px rgba(0, 0, 0, 0.52);
 }
 
 .cabin-display {
@@ -462,9 +546,57 @@ main {
 .cabin-doors {
   position: absolute;
   inset: 56px 0 0;
+  overflow: hidden;
   background:
     linear-gradient(90deg, transparent calc(50% - 1px), rgba(248, 245, 234, 0.18) 50%, transparent calc(50% + 1px)),
     linear-gradient(90deg, rgba(255, 255, 255, 0.07), transparent, rgba(255, 255, 255, 0.06));
+}
+
+.cabin-doors span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 35%, rgba(0, 0, 0, 0.2)),
+    linear-gradient(180deg, #343934, #171a17);
+  transition: transform 520ms var(--ease-door);
+}
+
+.cabin-doors span:first-child {
+  left: 0;
+  border-right: 1px solid rgba(248, 245, 234, 0.16);
+}
+
+.cabin-doors span:last-child {
+  right: 0;
+  border-left: 1px solid rgba(248, 245, 234, 0.16);
+}
+
+.cabin-light {
+  position: absolute;
+  inset: 56px 4px 4px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(242, 183, 5, 0.28), transparent 38%),
+    linear-gradient(180deg, rgba(248, 245, 234, 0.14), rgba(248, 245, 234, 0.02));
+  opacity: 0;
+  transition: opacity 420ms ease 120ms;
+}
+
+.cabin-open .cabin-doors span:first-child {
+  transform: translateX(-86%);
+}
+
+.cabin-open .cabin-doors span:last-child {
+  transform: translateX(86%);
+}
+
+.cabin-open .cabin-light {
+  opacity: 1;
+}
+
+.cabin-open .floor-readout strong {
+  text-shadow: 0 0 24px rgba(242, 183, 5, 0.62);
 }
 
 .floor-readout {

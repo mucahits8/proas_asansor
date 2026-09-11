@@ -104,9 +104,13 @@ const references = [
 
 function App() {
   const [activeSection, setActiveSection] = React.useState(0);
+  const [cabinPhase, setCabinPhase] = React.useState<'moving' | 'open'>('open');
+  const activeSectionRef = React.useRef(0);
 
   React.useEffect(() => {
     const root = document.documentElement;
+    let lastScrollY = window.scrollY;
+    let progressFrame = 0;
     const observed = sections
       .map((section) => document.getElementById(section.id))
       .filter(Boolean) as HTMLElement[];
@@ -115,6 +119,13 @@ function App() {
       const max = document.body.scrollHeight - window.innerHeight;
       const progress = max > 0 ? window.scrollY / max : 0;
       root.style.setProperty('--scroll-progress', String(progress));
+      root.style.setProperty('--scroll-direction', window.scrollY >= lastScrollY ? '1' : '-1');
+      lastScrollY = window.scrollY;
+    };
+
+    const requestProgress = () => {
+      cancelAnimationFrame(progressFrame);
+      progressFrame = requestAnimationFrame(setProgress);
     };
 
     const observer = new IntersectionObserver(
@@ -126,8 +137,11 @@ function App() {
         if (visible?.target.id) {
           const index = sections.findIndex((section) => section.id === visible.target.id);
           const nextIndex = Math.max(index, 0);
-          root.style.setProperty('--active-section', String(nextIndex));
-          setActiveSection(nextIndex);
+          if (nextIndex !== activeSectionRef.current) {
+            activeSectionRef.current = nextIndex;
+            root.style.setProperty('--active-section', String(nextIndex));
+            setActiveSection(nextIndex);
+          }
         }
       },
       { rootMargin: '-28% 0px -45% 0px', threshold: [0.18, 0.35, 0.55] },
@@ -135,17 +149,24 @@ function App() {
 
     observed.forEach((section) => observer.observe(section));
     setProgress();
-    window.addEventListener('scroll', setProgress, { passive: true });
+    window.addEventListener('scroll', requestProgress, { passive: true });
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('scroll', setProgress);
+      cancelAnimationFrame(progressFrame);
+      window.removeEventListener('scroll', requestProgress);
     };
   }, []);
 
+  React.useEffect(() => {
+    setCabinPhase('moving');
+    const openTimer = window.setTimeout(() => setCabinPhase('open'), 540);
+    return () => window.clearTimeout(openTimer);
+  }, [activeSection]);
+
   return (
     <main>
-      <SiteRail />
+      <SiteRail activeIndex={activeSection} />
       <Header />
       <section className="hero section" id="hero">
         <div className="door door-left" />
@@ -179,7 +200,7 @@ function App() {
             </div>
           </div>
 
-          <ElevatorVisual floor={sections[activeSection]?.number ?? '00'} />
+          <ElevatorVisual floor={sections[activeSection]?.number ?? '00'} phase={cabinPhase} />
         </div>
       </section>
 
@@ -377,7 +398,7 @@ function Header() {
   );
 }
 
-function SiteRail() {
+function SiteRail({ activeIndex }: { activeIndex: number }) {
   return (
     <aside className="site-rail" aria-label="Sayfa kat göstergesi">
       <div className="rail-line">
@@ -386,8 +407,12 @@ function SiteRail() {
         </div>
       </div>
       <div className="rail-floors">
-        {sections.map((section) => (
-          <a key={section.id} href={`#${section.id}`}>
+        {sections.map((section, index) => (
+          <a
+            className={index === activeIndex ? 'is-active' : undefined}
+            key={section.id}
+            href={`#${section.id}`}
+          >
             <span>{section.number}</span>
             <small>{section.label}</small>
           </a>
@@ -397,9 +422,9 @@ function SiteRail() {
   );
 }
 
-function ElevatorVisual({ floor }: { floor: string }) {
+function ElevatorVisual({ floor, phase }: { floor: string; phase: 'moving' | 'open' }) {
   return (
-    <div className="shaft-wrap" aria-hidden="true">
+    <div className={`shaft-wrap cabin-${phase}`} aria-hidden="true">
       <div className="shaft">
         <div className="shaft-lines">
           {Array.from({ length: 8 }).map((_, index) => (
@@ -408,7 +433,11 @@ function ElevatorVisual({ floor }: { floor: string }) {
         </div>
         <div className="cabin">
           <div className="cabin-display">PROAS</div>
-          <div className="cabin-doors" />
+          <div className="cabin-light" />
+          <div className="cabin-doors">
+            <span />
+            <span />
+          </div>
         </div>
         <div className="floor-readout">
           <small>ACTIVE FLOOR</small>
