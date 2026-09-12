@@ -8,6 +8,8 @@ import {
   ClipboardCheck,
   Factory,
   Gauge,
+  Lightbulb,
+  LightbulbOff,
   LifeBuoy,
   Menu,
   MoveVertical,
@@ -26,13 +28,13 @@ const navItems = [
 ];
 
 const sections = [
-  { id: 'hero', number: '00', label: 'Giriş' },
-  { id: 'solutions', number: '01', label: 'Çözümler' },
-  { id: 'services', number: '02', label: 'Hizmetler' },
-  { id: 'process', number: '03', label: 'Süreç' },
-  { id: 'modernization', number: '04', label: 'Modernizasyon' },
-  { id: 'references', number: '05', label: 'Referanslar' },
-  { id: 'contact', number: '06', label: 'İletişim' },
+  { id: 'hero', number: '00', label: 'Giriş Katı' },
+  { id: 'solutions', number: '01', label: 'Çözümler Katı' },
+  { id: 'services', number: '02', label: 'Hizmetler Katı' },
+  { id: 'process', number: '03', label: 'Süreç Katı' },
+  { id: 'modernization', number: '04', label: 'Modernizasyon Katı' },
+  { id: 'references', number: '05', label: 'Referanslar Katı' },
+  { id: 'contact', number: '06', label: 'İletişim Katı' },
 ];
 
 const solutions = [
@@ -104,7 +106,8 @@ const references = [
 
 function App() {
   const [activeSection, setActiveSection] = React.useState(0);
-  const [cabinPhase, setCabinPhase] = React.useState<'moving' | 'open'>('open');
+  const [lightsOn, setLightsOn] = React.useState(true);
+  const [isSwitchingLights, setIsSwitchingLights] = React.useState(false);
   const activeSectionRef = React.useRef(0);
 
   React.useEffect(() => {
@@ -158,16 +161,21 @@ function App() {
     };
   }, []);
 
-  React.useEffect(() => {
-    setCabinPhase('moving');
-    const openTimer = window.setTimeout(() => setCabinPhase('open'), 540);
-    return () => window.clearTimeout(openTimer);
-  }, [activeSection]);
+  const toggleLights = () => {
+    if (isSwitchingLights) return;
+    setIsSwitchingLights(true);
+    window.setTimeout(() => setLightsOn((current) => !current), 320);
+    window.setTimeout(() => setIsSwitchingLights(false), 860);
+  };
 
   return (
-    <main>
+    <main className={`site-shell ${lightsOn ? 'lights-on' : 'lights-off'} ${isSwitchingLights ? 'is-switching-lights' : ''}`}>
+      <div className="light-transition" aria-hidden="true">
+        <span />
+        <span />
+      </div>
       <SiteRail activeIndex={activeSection} />
-      <Header />
+      <Header lightsOn={lightsOn} onToggleLights={toggleLights} />
       <section className="hero section" id="hero">
         <div className="door door-left" />
         <div className="door door-right" />
@@ -200,7 +208,7 @@ function App() {
             </div>
           </div>
 
-          <ElevatorVisual floor={sections[activeSection]?.number ?? '00'} phase={cabinPhase} />
+          <ElevatorVisual floor={sections[activeSection]?.number ?? '00'} />
         </div>
       </section>
 
@@ -374,7 +382,15 @@ function App() {
   );
 }
 
-function Header() {
+function Header({
+  lightsOn,
+  onToggleLights,
+}: {
+  lightsOn: boolean;
+  onToggleLights: () => void;
+}) {
+  const LightIcon = lightsOn ? LightbulbOff : Lightbulb;
+
   return (
     <header className="site-header">
       <a className="brand" href="#hero" aria-label="PROAS ana sayfa">
@@ -388,9 +404,15 @@ function Header() {
           </a>
         ))}
       </nav>
-      <a className="header-cta" href="#contact">
-        Teklif Al <ArrowUpRight aria-hidden="true" />
-      </a>
+      <div className="header-actions">
+        <button className="light-toggle" type="button" onClick={onToggleLights}>
+          <LightIcon aria-hidden="true" />
+          {lightsOn ? 'Işıkları Kapat' : 'Işıkları Aç'}
+        </button>
+        <a className="header-cta" href="#contact">
+          Teklif Al <ArrowUpRight aria-hidden="true" />
+        </a>
+      </div>
       <button className="menu-button" aria-label="Menüyü aç">
         <Menu aria-hidden="true" />
       </button>
@@ -422,9 +444,9 @@ function SiteRail({ activeIndex }: { activeIndex: number }) {
   );
 }
 
-function ElevatorVisual({ floor, phase }: { floor: string; phase: 'moving' | 'open' }) {
+function ElevatorVisual({ floor }: { floor: string }) {
   return (
-    <div className={`shaft-wrap cabin-${phase}`} aria-hidden="true">
+    <div className="shaft-wrap" tabIndex={0} aria-label="Asansör kabini. Üzerine gelince kapıları açılır.">
       <div className="shaft">
         <div className="shaft-lines">
           {Array.from({ length: 8 }).map((_, index) => (
@@ -440,8 +462,9 @@ function ElevatorVisual({ floor, phase }: { floor: string; phase: 'moving' | 'op
           </div>
         </div>
         <div className="floor-readout">
-          <small>ACTIVE FLOOR</small>
+          <small>AKTİF KAT</small>
           <strong>{floor}</strong>
+          <em>Üzerine gel</em>
         </div>
       </div>
       <div className="technical-ring">
