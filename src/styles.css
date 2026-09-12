@@ -96,10 +96,10 @@ a {
 
 .site-shell.shell-home {
   background:
-    radial-gradient(circle at 76% 12%, rgba(214, 161, 0, 0.18), transparent 22rem),
-    linear-gradient(90deg, rgba(18, 19, 16, 0.56), rgba(18, 19, 16, 0.2) 44%, rgba(18, 19, 16, 0.48)),
+    radial-gradient(circle at 76% 12%, rgba(214, 161, 0, 0.14), transparent 23rem),
+    linear-gradient(90deg, rgba(245, 243, 234, 0.94), rgba(245, 243, 234, 0.74) 46%, rgba(238, 238, 229, 0.92)),
     image-set(url("/proas-elevator-shaft.png") 1x),
-    linear-gradient(180deg, #11130f, #f5f3ea);
+    linear-gradient(180deg, #fbfaf4, #f5f3ea);
   background-position: center top;
   background-size: auto, cover, cover, auto;
 }
@@ -168,6 +168,16 @@ a {
   background-attachment: scroll;
   background-position: center top, center top, center, center;
   background-size: cover, cover, auto, auto;
+}
+
+.site-shell.shell-home.lights-off {
+  background:
+    radial-gradient(circle at 76% 12%, rgba(214, 161, 0, 0.18), transparent 22rem),
+    linear-gradient(90deg, rgba(7, 8, 7, 0.96), rgba(7, 8, 7, 0.7) 44%, rgba(7, 8, 7, 0.9)),
+    image-set(url("/proas-elevator-shaft.png") 1x),
+    linear-gradient(180deg, #11130f, #050605);
+  background-position: center top;
+  background-size: auto, cover, cover, auto;
 }
 
 .site-shell.lights-off::before {
@@ -562,21 +572,37 @@ a {
 
 .cinematic {
   background:
+    linear-gradient(90deg, rgba(250, 249, 242, 0.86), rgba(250, 249, 242, 0.58) 48%, rgba(244, 242, 232, 0.92)),
+    radial-gradient(circle at 70% 12%, rgba(214, 161, 0, 0.12), transparent 26rem);
+  color: var(--ink);
+}
+
+.cinematic h1,
+.cinematic .hero-lead {
+  color: var(--ink);
+}
+
+.cinematic h1 {
+  color: var(--ink);
+}
+
+.cinematic .hero-lead {
+  color: var(--muted);
+}
+
+.lights-off .cinematic {
+  background:
     linear-gradient(90deg, rgba(7, 8, 7, 0.88), rgba(7, 8, 7, 0.58) 52%, rgba(7, 8, 7, 0.9)),
     radial-gradient(circle at 70% 12%, rgba(242, 183, 5, 0.12), transparent 26rem);
   color: #fbf8ef;
 }
 
-.cinematic h1,
-.cinematic .hero-lead {
+.lights-off .cinematic h1,
+.lights-off .cinematic .hero-lead {
   color: #fbf8ef;
 }
 
-.cinematic h1 {
-  color: #fbf8ef;
-}
-
-.cinematic .hero-lead {
+.lights-off .cinematic .hero-lead {
   color: rgba(251, 248, 239, 0.72);
 }
 
@@ -597,7 +623,7 @@ a {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(7, 8, 7, 0.32), transparent 42%, rgba(255, 255, 255, 0.68)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.52), transparent 42%, rgba(255, 255, 255, 0.78)),
     repeating-linear-gradient(90deg, transparent 0, transparent 98px, rgba(17, 19, 15, 0.03) 99px);
 }
 
@@ -657,16 +683,20 @@ a {
   max-width: 900px;
   color: var(--ink);
   font-size: var(--heading-xl);
-  line-height: 0.92;
+  line-height: 0.96;
   letter-spacing: 0;
 }
 
 .hero h1 span {
-  display: inline;
+  display: inline-block;
   color: #11130f;
   background: linear-gradient(90deg, #e4af16, #ffd84a);
   box-decoration-break: clone;
-  padding: 0 0.08em;
+  margin: 0.02em 0;
+  padding: 0.01em 0.09em 0.04em;
+  line-height: 0.92;
+  vertical-align: baseline;
+  white-space: nowrap;
 }
 
 .hero h1 {
@@ -674,10 +704,18 @@ a {
 }
 
 .hero.cinematic h1 {
-  color: #fbf8ef;
+  color: var(--ink);
 }
 
 .hero.cinematic .hero-lead {
+  color: var(--muted);
+}
+
+.lights-off .hero.cinematic h1 {
+  color: #fbf8ef;
+}
+
+.lights-off .hero.cinematic .hero-lead {
   color: rgba(251, 248, 239, 0.74);
 }
 
@@ -706,6 +744,10 @@ a {
 }
 
 .cinematic .hero-tags {
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
+}
+
+.lights-off .cinematic .hero-tags {
   color: rgba(251, 248, 239, 0.76);
 }
 
@@ -2574,6 +2616,12 @@ a {
 
   .hero h1 {
     font-size: clamp(3rem, 16vw, 5.35rem);
+    line-height: 1;
+  }
+
+  .hero h1 span {
+    white-space: normal;
+    padding: 0 0.08em 0.04em;
   }
 
   .hero-actions,
