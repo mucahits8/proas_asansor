@@ -107,8 +107,8 @@ a {
   background:
     radial-gradient(
       circle at 76% 12%,
-      rgba(214, 161, 0, 0.08),
-      transparent 18rem
+      rgba(214, 161, 0, 0.055),
+      transparent 16rem
     ),
     linear-gradient(
       90deg,
@@ -673,14 +673,14 @@ a {
   background:
     linear-gradient(
       90deg,
-      rgba(250, 249, 242, 0.74),
-      rgba(250, 249, 242, 0.48) 48%,
-      rgba(244, 242, 232, 0.8)
+      rgba(250, 249, 242, 0.66),
+      rgba(250, 249, 242, 0.4) 48%,
+      rgba(244, 242, 232, 0.7)
     ),
     radial-gradient(
       circle at 70% 12%,
-      rgba(214, 161, 0, 0.07),
-      transparent 20rem
+      rgba(214, 161, 0, 0.045),
+      transparent 17rem
     );
   color: var(--ink);
 }
@@ -742,9 +742,9 @@ a {
   background:
     linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.34),
+      rgba(255, 255, 255, 0.24),
       transparent 42%,
-      rgba(255, 255, 255, 0.48)
+      rgba(255, 255, 255, 0.34)
     ),
     repeating-linear-gradient(
       90deg,
@@ -3013,7 +3013,55 @@ a {
   }
 
   .shaft-wrap {
-    min-height: 330px;
+    min-height: 380px;
+    margin-top: -10px;
+  }
+
+  .cinematic {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(250, 249, 242, 0.52),
+        rgba(250, 249, 242, 0.34) 48%,
+        rgba(244, 242, 232, 0.56)
+      ),
+      radial-gradient(
+        circle at 68% 14%,
+        rgba(214, 161, 0, 0.035),
+        transparent 14rem
+      );
+  }
+
+  .hero-noise {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.16),
+        transparent 44%,
+        rgba(255, 255, 255, 0.24)
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 98px,
+        rgba(17, 19, 15, 0.026) 99px
+      );
+  }
+
+  .shaft-wrap .cabin {
+    transform: translateY(var(--hero-cabin-lift, 0));
+  }
+
+  .shaft-wrap .cabin-doors span:first-child {
+    transform: translateX(var(--hero-door-left, 0%));
+  }
+
+  .shaft-wrap .cabin-doors span:last-child {
+    transform: translateX(var(--hero-door-right, 0%));
+  }
+
+  .shaft-wrap .cabin-light {
+    opacity: var(--hero-light-opacity, 0.22);
   }
 
   .corporate-asset {
