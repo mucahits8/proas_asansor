@@ -48,11 +48,14 @@ type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
 const homeRail: RailItem[] = [
   { id: 'hero', number: '00', label: 'Giriş Katı' },
   { id: 'solutions', number: '01', label: 'Çözümler Katı' },
-  { id: 'services', number: '02', label: 'Hizmetler Katı' },
-  { id: 'projects', number: '03', label: 'Projeler Katı' },
-  { id: 'modernization', number: '04', label: 'Modernizasyon Katı' },
-  { id: 'references', number: '05', label: 'Referanslar Katı' },
-  { id: 'contact', number: '06', label: 'İletişim Katı' },
+  { id: 'lifecycle', number: '02', label: 'Yaşam Döngüsü Katı' },
+  { id: 'projects', number: '03', label: 'Referans Katı' },
+  { id: 'experience', number: '04', label: 'Deneyim Katı' },
+  { id: 'engineering', number: '05', label: 'Mühendislik Katı' },
+  { id: 'certificates', number: '06', label: 'Belge Katı' },
+  { id: 'network', number: '07', label: 'Servis Ağı Katı' },
+  { id: 'knowledge', number: '08', label: 'Bilgi Katı' },
+  { id: 'contact', number: '09', label: 'İletişim Katı' },
 ];
 
 const defaultRail: RailItem[] = [
@@ -205,25 +208,54 @@ const projectSegments = [
   'Endüstriyel',
 ];
 
-const projectPlaceholders = [
+const selectedReferences = [
   {
-    title: 'Sağlık Yapısı Modernizasyonu',
-    slug: 'saglik-yapisi-modernizasyonu',
+    title: 'Yavuz Selim Kemik Hastanesi',
+    slug: 'yavuz-selim-kemik-hastanesi',
     category: 'Sağlık',
-    scope: 'Modernizasyon / bakım sürekliliği',
+    location: 'Trabzon',
+    systems: '2 sistem',
+    status: 'reference-application',
   },
   {
-    title: 'Karma Kullanımlı Konut Projesi',
-    slug: 'karma-konut-projesi',
-    category: 'Konut',
-    scope: 'Yeni kurulum / trafik planı',
+    title: 'Dedeman Erzurum',
+    slug: 'dedeman-erzurum',
+    category: 'Konaklama',
+    location: 'Erzurum',
+    systems: '7 sistem',
+    status: 'reference-application',
   },
   {
-    title: 'Ticari Yapı Servis Organizasyonu',
-    slug: 'ticari-yapi-servis-organizasyonu',
-    category: 'Ticari',
-    scope: 'Periyodik bakım / arıza yönetimi',
+    title: 'Bayburt Devlet Hastanesi',
+    slug: 'bayburt-devlet-hastanesi',
+    category: 'Sağlık',
+    location: 'Bayburt',
+    systems: '3 sistem',
+    status: 'reference-application',
   },
+  {
+    title: 'Dedeman Rize',
+    slug: 'dedeman-rize',
+    category: 'Konaklama',
+    location: 'Rize',
+    systems: '4 sistem',
+    status: 'reference-application',
+  },
+];
+
+const referenceGroups = [
+  ['Sağlık', ['Yavuz Selim Kemik Hastanesi', 'Bayburt Devlet Hastanesi']],
+  ['Bankacılık', ['İş Bankası', 'Yapı Kredi Bankası', 'Halkbank']],
+  ['Konaklama', ['Dedeman Erzurum', 'Dedeman Rize']],
+  ['Kamu', ['Rize Belediyesi']],
+  ['Perakende', ['Migros']],
+  ['Ticari', ['Bölge müdürlüğü ve şube uygulamaları']],
+];
+
+const knowledgePreview = [
+  ['Bakım', 'Periyodik bakım neden önemlidir?', '/bilgi-merkezi/asansor-bakiminda-duzenli-kontrol'],
+  ['Modernizasyon', 'Asansör modernizasyonu ne zaman gerekir?', '/bilgi-merkezi/modernizasyon-kararinda-teknik-gostergeler'],
+  ['Teknik', 'Doğru asansör kapasitesi nasıl planlanır?', '/bilgi-merkezi/dogru-asansor-kapasitesi-planlama'],
 ];
 
 const solutionSectionIds = ['passenger', 'panoramic', 'health', 'load', 'vehicle', 'access'];
@@ -333,8 +365,8 @@ const routeCopy: Route[] = [
     path: '/projeler',
     label: 'Projeler',
     eyebrow: '03 — Projeler',
-    title: 'Gerçek proje kanıtları için güçlü bir modül.',
-    intro: 'Bu alan gerçek fotoğraf, lokasyon, sektör, kapsam ve teknik detaylar geldiğinde case study sayfalarına dönüşecek.',
+    title: 'Seçili referans ve uygulama kayıtları.',
+    intro: 'Bu alan gerçek fotoğraf, lokasyon, sektör, kapsam ve teknik detaylar geldikçe daha güçlü proje detaylarına dönüşecek.',
     rail: defaultRail,
   },
   {
@@ -527,9 +559,9 @@ function HomePage({ activeSection, navigate }: { activeSection: number; navigate
               </SiteLink>
             </div>
             <div className="hero-tags" aria-label="Hizmet alanları">
-              <span>Montaj</span>
+              <span>Yeni Kurulum</span>
               <span>Bakım & Servis</span>
-              <span>Revizyon</span>
+              <span>Modernizasyon</span>
               <span>Erişilebilirlik</span>
             </div>
           </div>
@@ -553,14 +585,17 @@ function HomePage({ activeSection, navigate }: { activeSection: number; navigate
         <div className="container section-heading">
           <p className="eyebrow">01 — Çözümler</p>
           <h2>Yapıya göre şekillenen asansör sistemleri.</h2>
+          <SiteLink className="section-link" to="/cozumler" onNavigate={navigate}>
+            Tüm Çözümleri Gör <ArrowUpRight aria-hidden="true" />
+          </SiteLink>
         </div>
-        <SolutionGrid items={solutions.slice(0, 4)} navigate={navigate} />
+        <SolutionGrid items={solutions} navigate={navigate} />
       </section>
 
-      <section className="section light-band" id="services">
+      <section className="section light-band lifecycle-section" id="lifecycle">
         <div className="container split-heading">
           <div>
-            <p className="eyebrow">02 — Hizmetler</p>
+            <p className="eyebrow">02 — Yaşam Döngüsü</p>
             <h2>Kurulumdan son kata kadar değil, sistem ömrü boyunca.</h2>
           </div>
           <p>
@@ -568,46 +603,104 @@ function HomePage({ activeSection, navigate }: { activeSection: number; navigate
             dikey ulaşımın ana parçası olarak ele alır.
           </p>
         </div>
-        <ServiceGrid navigate={navigate} />
+        <LifecycleFlow navigate={navigate} />
       </section>
 
       <section className="section projects-preview dark-section" id="projects">
         <div className="container split-heading">
           <div>
-            <p className="eyebrow">03 — Projeler</p>
-            <h2>Gerçek proje kanıtları için ayrı bir kat.</h2>
+            <p className="eyebrow">03 — Seçili Referanslar</p>
+            <h2>Her proje, ayrı bir kat.</h2>
           </div>
           <p>
-            Fotoğraf, lokasyon ve teknik kapsam verisi geldiğinde bu modül seçili proje sayfalarına
-            bağlanacak. Şimdilik yapı hazır; veri uydurmuyoruz.
+            Yayınlanmış referans listesinden alınan uygulamalar; teknik kapsam, yıl ve fotoğraflar
+            müşteri verisiyle ayrıca zenginleşecek.
           </p>
         </div>
         <ProjectModules navigate={navigate} />
+        <div className="container section-action">
+          <SiteLink className="button button-ghost" to="/referanslar" onNavigate={navigate}>
+            Tüm Referansları Gör <ArrowUpRight aria-hidden="true" />
+          </SiteLink>
+        </div>
       </section>
 
-      <section className="section modernization" id="modernization">
+      <section className="section experience-section" id="experience">
+        <div className="container split-heading">
+          <div>
+            <p className="eyebrow">04 — PROAS Deneyimi</p>
+            <h2>2003’ten bugüne, dikey ulaşımın içinde.</h2>
+          </div>
+          <p>
+            PROAS’ın kendi kurumsal anlatımında yer alan faaliyet geçmişi; montaj, bakım, revizyon
+            ve erişilebilirlik sistemleri odağında sade bir güven zemini kurar.
+          </p>
+        </div>
+        <div className="container experience-points">
+          <div><ShieldCheck aria-hidden="true" /><span>Kontrollü keşif ve projelendirme</span></div>
+          <div><Wrench aria-hidden="true" /><span>Düzenli bakım ve servis takibi</span></div>
+          <div><Gauge aria-hidden="true" /><span>Modernizasyon ve performans iyileştirme</span></div>
+        </div>
+      </section>
+
+      <section className="section modernization engineering-section" id="engineering">
         <div className="container modernization-grid">
           <div>
-            <p className="eyebrow">04 — Modernizasyon</p>
-            <h2>Eski sistemi yalnızca yenilemeyiz; güven, konfor ve süreklilik kazandırırız.</h2>
+            <p className="eyebrow">05 — Mühendislik / Üretim</p>
+            <h2>Sahadaki deneyim, üretim disipliniyle birleşir.</h2>
+            <p className="section-copy">
+              Teknik ekip, saha uygulaması, bakım planı ve kalite kontrol aynı süreç dilinde
+              konumlanır. Üretim, kabin, kapı ve ekip görselleri geldikçe bu alan gerçek materyalle
+              güçlenecek.
+            </p>
           </div>
           <ModernizationCabin />
         </div>
       </section>
 
+      <section className="section certificates-section" id="certificates">
+        <div className="container split-heading">
+          <div>
+            <p className="eyebrow">06 — Belgeler & Yetkinlikler</p>
+            <h2>Belge ve standart alanları net, abartısız ve doğrulanabilir.</h2>
+          </div>
+          <SiteLink className="section-link" to="/belgeler" onNavigate={navigate}>
+            Belgeleri İncele <ArrowUpRight aria-hidden="true" />
+          </SiteLink>
+        </div>
+        <DocumentPreview />
+      </section>
+
+      <section className="section references" id="network">
+        <div className="container split-heading">
+          <div>
+            <p className="eyebrow">07 — Servis Ağı</p>
+            <h2>Trabzon ve Samsun odağında ulaşılabilir teknik destek.</h2>
+          </div>
+          <p>Servis, arıza ve teklif talepleri için bölgesel temas noktaları net bir başlangıç akışına bağlanır.</p>
+        </div>
+        <ServiceNetwork />
+      </section>
+
       <section className="section references" id="references">
         <div className="container section-heading">
-          <p className="eyebrow">05 — Referanslar</p>
+          <p className="eyebrow">08 — Referans Mimarisi</p>
           <h2>Farklı yoğunluklara sahip yapılarda teknik güven.</h2>
         </div>
         <ReferenceSegments />
-        <div className="container production-strip">
-          <Factory aria-hidden="true" />
-          <p>
-            Üretim ve çözüm geliştirme ağına dair tüm kurumsal kanıtlar yayın öncesi şirket
-            tarafından doğrulanacak şekilde konumlandırıldı.
-          </p>
+      </section>
+
+      <section className="section knowledge-section" id="knowledge">
+        <div className="container split-heading">
+          <div>
+            <p className="eyebrow">09 — Bilgi Merkezi</p>
+            <h2>Bakım, modernizasyon ve proje kararları için teknik rehberlik.</h2>
+          </div>
+          <SiteLink className="section-link" to="/bilgi-merkezi" onNavigate={navigate}>
+            Bilgi Merkezini İncele <ArrowUpRight aria-hidden="true" />
+          </SiteLink>
         </div>
+        <KnowledgePreview navigate={navigate} />
       </section>
 
       <section className="section contact" id="contact">
@@ -628,7 +721,7 @@ function PageRouter({
 }) {
   const solution = solutions.find((item) => item.path === path);
   const service = services.find((item) => item.path === path);
-  const project = projectPlaceholders.find((item) => `/projeler/${item.slug}` === path);
+  const project = selectedReferences.find((item) => `/projeler/${item.slug}` === path);
   const article = articlePlaceholders.find((item) => `/bilgi-merkezi/${item.slug}` === path);
 
   if (path === '/teklif-al') return <QuoteWizard navigate={navigate} />;
@@ -813,6 +906,30 @@ function ServiceGrid({ navigate }: { navigate: (path: string) => void }) {
   );
 }
 
+function LifecycleFlow({ navigate }: { navigate: (path: string) => void }) {
+  return (
+    <div className="container lifecycle-flow">
+      {services.slice(0, 4).map((service, index) => {
+        const Icon = service.icon;
+        return (
+          <SiteLink className="lifecycle-step" key={service.title} to={service.path} onNavigate={navigate}>
+            <span>{service.number}</span>
+            <div className="lifecycle-icon">
+              <Icon aria-hidden="true" />
+            </div>
+            <div>
+              <h3>{service.title}</h3>
+              <p>{service.copy}</p>
+              <small>{service.meta}</small>
+            </div>
+            {index < 3 ? <i aria-hidden="true" /> : null}
+          </SiteLink>
+        );
+      })}
+    </div>
+  );
+}
+
 function ModernizationCabin() {
   return (
     <div className="before-after" aria-label="Modernizasyon karşılaştırması">
@@ -840,17 +957,17 @@ function ModernizationCabin() {
 function ProjectModules({ navigate }: { navigate: (path: string) => void }) {
   return (
     <div className="container project-modules">
-      {projectPlaceholders.map((project, index) => (
+      {selectedReferences.map((project, index) => (
         <SiteLink key={project.slug} className="project-module" to={`/projeler/${project.slug}`} onNavigate={navigate}>
-          <span>{String(index + 1).padStart(2, '0')}</span>
+          <span>{String(index + 1).padStart(2, '0')} — {project.category.toUpperCase()}</span>
           <div className="asset-placeholder">
-            <FileText aria-hidden="true" />
-            <small>CLIENT DATA REQUIRED</small>
+            <Building2 aria-hidden="true" />
+            <small>Referans / Uygulama</small>
           </div>
           <div>
-            <p>{project.category}</p>
+            <p>{project.location}</p>
             <h3>{project.title}</h3>
-            <small>{project.scope}</small>
+            <small>{project.systems}</small>
           </div>
         </SiteLink>
       ))}
@@ -861,12 +978,55 @@ function ProjectModules({ navigate }: { navigate: (path: string) => void }) {
 function ReferenceSegments() {
   return (
     <div className="container reference-grid segmented">
-      {projectSegments.map((reference) => (
-        <div className="reference-tile" key={reference}>
+      {referenceGroups.map(([group, names]) => (
+        <div className="reference-tile" key={group as string}>
           <CircleDot aria-hidden="true" />
-          <span>{reference}</span>
-          <small>Referans verisi eklenecek</small>
+          <span>{group as string}</span>
+          <small>{(names as string[]).join(' · ')}</small>
         </div>
+      ))}
+    </div>
+  );
+}
+
+function DocumentPreview() {
+  return (
+    <div className="container document-grid compact-documents">
+      {['TSE', 'ISO', 'Hizmet Yeterliliği'].map((title) => (
+        <article className="document-card" key={title}>
+          <FileText aria-hidden="true" />
+          <h3>{title}</h3>
+          <p>Güncel belge dosyası ve geçerlilik bilgisi eklendiğinde bu alan belge kartına dönüşür.</p>
+          <small>Belge alanı</small>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function ServiceNetwork() {
+  return (
+    <div className="container network-grid">
+      {['Trabzon', 'Samsun'].map((city) => (
+        <article className="network-card" key={city}>
+          <span>{city}</span>
+          <h3>Servis ve teklif iletişimi</h3>
+          <p>Keşif, bakım, arıza ve modernizasyon talepleri için bölgesel iletişim akışı.</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function KnowledgePreview({ navigate }: { navigate: (path: string) => void }) {
+  return (
+    <div className="container article-grid">
+      {knowledgePreview.map(([tag, title, link]) => (
+        <SiteLink key={link} to={link} onNavigate={navigate}>
+          <span>{tag}</span>
+          <h3>{title}</h3>
+          <p>Bakım ve proje kararlarında müşterinin doğru soruyu sormasına yardımcı olacak kısa teknik rehber.</p>
+        </SiteLink>
       ))}
     </div>
   );
@@ -942,14 +1102,14 @@ function ProjectsPage({ route, navigate }: { route: Route; navigate: (path: stri
   );
 }
 
-function ProjectDetail({ project, navigate }: { project: (typeof projectPlaceholders)[number]; navigate: (path: string) => void }) {
+function ProjectDetail({ project, navigate }: { project: (typeof selectedReferences)[number]; navigate: (path: string) => void }) {
   return (
     <>
-      <DetailHero eyebrow={`Proje / ${project.category}`} title={project.title} intro={`${project.scope}. Proje fotoğrafı, lokasyon, yıl ve teknik kapsam bilgisi müşteri verisiyle tamamlanacak.`} backTo="/projeler" navigate={navigate} />
+      <DetailHero eyebrow={`Referans / ${project.category}`} title={project.title} intro={`${project.location} · ${project.systems}. Teknik kapsam, yıl ve görsel arşiv müşteri onayıyla eklenecek.`} backTo="/projeler" navigate={navigate} />
       <section className="section detail-body" id="scope">
         <div className="container case-study-grid">
           <EvidencePlaceholder />
-          <ProofPanel title="Case Study Alanları" items={['Lokasyon: [CLIENT DATA REQUIRED]', 'Yıl: [CLIENT DATA REQUIRED]', 'Uygulanan çözüm: [CLIENT DATA REQUIRED]', 'Galeri: [CLIENT DATA REQUIRED]']} />
+          <ProofPanel title="Yayın Hazırlığı" items={[`Lokasyon: ${project.location}`, `Doğrulanmış sistem sayısı: ${project.systems}`, 'Teknik kapsam müşteri verisiyle tamamlanacak', 'Fotoğraf galerisi izinli görsellerle yayınlanacak']} />
         </div>
       </section>
       <PageCta navigate={navigate} />
@@ -970,7 +1130,7 @@ function CorporateIndex({ route, navigate }: { route: Route; navigate: (path: st
           <div className="corporate-asset">
             <Factory aria-hidden="true" />
             <span>EKİP / OFİS / ÜRETİM GÖRSELİ</span>
-            <small>PLACEHOLDER ASSET</small>
+            <small>Görsel alanı</small>
           </div>
         </div>
       </section>
@@ -1044,7 +1204,7 @@ function DocumentsPage({ route }: { route: Route }) {
               <FileText aria-hidden="true" />
               <h3>{title}</h3>
               <p>{copy}</p>
-              <small>[CLIENT DATA REQUIRED]</small>
+              <small>Belge alanı</small>
             </article>
           ))}
         </div>
@@ -1078,7 +1238,7 @@ function ArticleDetail({ article, navigate }: { article: (typeof articlePlacehol
       <DetailHero eyebrow={`Bilgi Merkezi / ${article.tag}`} title={article.title} intro="Kurumsal müşterinin anlayacağı kısa, net ve teknik içerik yapısı hazırlandı. Nihai metin gerçek bilgiyle tamamlanacak." backTo="/bilgi-merkezi" navigate={navigate} />
       <section className="section detail-body" id="scope">
         <div className="container article-body">
-          <p>[CLIENT DATA REQUIRED] Bu bölümde teknik açıklama, kontrol listesi ve PROAS yaklaşımı yer alacak.</p>
+          <p>Bu bölümde teknik açıklama, kontrol listesi ve PROAS yaklaşımı yer alacak.</p>
         </div>
       </section>
     </>
@@ -1248,7 +1408,7 @@ function EvidencePlaceholder() {
       <Upload aria-hidden="true" />
       <h3>Gerçek görsel / belge alanı</h3>
       <p>Proje fotoğrafı, kabin, makine dairesi, ekip veya sertifika görseli müşteri verisiyle değiştirilecek.</p>
-      <small>CLIENT DATA REQUIRED</small>
+      <small>Görsel alanı</small>
     </div>
   );
 }
