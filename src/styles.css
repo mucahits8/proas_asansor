@@ -433,9 +433,14 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.98fr) minmax(380px, 0.82fr);
-  align-items: center;
+  grid-template-columns: minmax(0, 0.92fr) minmax(430px, 0.74fr);
+  align-items: stretch;
   gap: 48px;
+  min-height: clamp(640px, calc(100svh - 160px), 860px);
+}
+
+.hero-copy {
+  align-self: center;
 }
 
 .hero-noise {
@@ -556,21 +561,23 @@ a {
 
 .shaft-wrap {
   position: relative;
-  min-height: 560px;
+  min-height: 640px;
+  height: 100%;
   outline: none;
 }
 
 .shaft {
   position: absolute;
-  inset: 0 6% 0 16%;
-  overflow: hidden;
-  border: 1px solid var(--line-strong);
+  z-index: 1;
+  inset: -8px -1% -8px 2%;
+  overflow: visible;
+  border: 0;
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.42), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.5)),
-    repeating-linear-gradient(0deg, transparent 0 86px, rgba(17, 19, 15, 0.06) 87px),
-    rgba(255, 255, 255, 0.42);
-  box-shadow: var(--shadow), inset 0 0 62px rgba(255, 255, 255, 0.46);
+    linear-gradient(90deg, transparent 0 22%, color-mix(in srgb, var(--accent) 28%, transparent) 22.2% 22.6%, transparent 22.8% 77%, color-mix(in srgb, var(--accent) 28%, transparent) 77.2% 77.6%, transparent 77.8%),
+    repeating-linear-gradient(0deg, transparent 0 88px, rgba(17, 19, 15, 0.07) 89px),
+    transparent;
+  box-shadow: none;
   backdrop-filter: blur(14px);
   transition:
     transform 220ms var(--ease-lift),
@@ -580,16 +587,14 @@ a {
 
 .shaft-wrap:hover .shaft,
 .shaft-wrap:focus-visible .shaft {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--accent) 56%, transparent);
-  box-shadow:
-    0 26px 84px color-mix(in srgb, var(--accent) 16%, transparent),
-    var(--shadow);
+  transform: translateY(-3px);
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .shaft-lines {
   position: absolute;
-  inset: 0;
+  inset: -92px 0;
   display: grid;
   grid-template-rows: repeat(7, 1fr);
 }
@@ -606,7 +611,7 @@ a {
   bottom: 0;
   z-index: 1;
   width: 2px;
-  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent) 44%, transparent), transparent);
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent) 36%, transparent), transparent);
   opacity: 0.74;
 }
 
@@ -621,16 +626,17 @@ a {
 .cabin {
   position: absolute;
   z-index: 2;
-  left: 18%;
-  right: 18%;
-  top: 22%;
-  height: 170px;
-  border: 1px solid var(--line-strong);
+  inset: 0;
+  min-height: 100%;
+  border: 1px solid color-mix(in srgb, var(--line-strong) 92%, var(--ink));
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.58), transparent 34%, rgba(255, 255, 255, 0.64)),
-    linear-gradient(180deg, #ffffff, #dfe5e1);
-  box-shadow: 0 22px 60px rgba(32, 38, 34, 0.2);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(230, 236, 232, 0.88) 18%, rgba(255, 255, 255, 0.96) 50%, rgba(214, 223, 218, 0.9) 82%, rgba(255, 255, 255, 0.98)),
+    linear-gradient(180deg, #ffffff, #e2e9e5);
+  box-shadow:
+    0 26px 82px rgba(32, 38, 34, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    inset 0 -24px 54px rgba(102, 114, 107, 0.14);
   overflow: hidden;
   transition:
     transform 220ms var(--ease-lift),
@@ -639,13 +645,16 @@ a {
 
 .shaft-wrap:hover .cabin,
 .shaft-wrap:focus-visible .cabin {
-  transform: translateY(-6px);
-  box-shadow: 0 28px 72px rgba(212, 161, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow:
+    0 30px 94px rgba(212, 161, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -24px 54px rgba(102, 114, 107, 0.14);
 }
 
 .cabin-display {
   position: absolute;
-  top: 17px;
+  top: 28px;
   left: 50%;
   z-index: 3;
   transform: translateX(-50%);
@@ -661,17 +670,18 @@ a {
 
 .cabin-light {
   position: absolute;
-  inset: 56px 4px 4px;
+  inset: 82px 10px 14px;
   background:
-    radial-gradient(circle at 50% 34%, rgba(243, 196, 25, 0.42), transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.24));
+    radial-gradient(circle at 50% 24%, rgba(243, 196, 25, 0.36), transparent 28%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.72), transparent 22%, rgba(255, 255, 255, 0.58) 50%, transparent 78%, rgba(255, 255, 255, 0.76)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.18));
   opacity: 0.22;
   transition: opacity 240ms ease;
 }
 
 .cabin-doors {
   position: absolute;
-  inset: 56px 0 0;
+  inset: 82px 0 0;
   z-index: 2;
   overflow: hidden;
   background:
@@ -685,8 +695,9 @@ a {
   bottom: 0;
   width: 50.5%;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.58), transparent 35%, rgba(96, 106, 99, 0.12)),
-    linear-gradient(180deg, #f8faf7, #c6d0ca);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.82), transparent 35%, rgba(96, 106, 99, 0.16)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 74px),
+    linear-gradient(180deg, #f8faf7, #bfcac4);
   transition: transform 260ms var(--ease-door);
 }
 
@@ -719,7 +730,7 @@ a {
   position: absolute;
   right: 22px;
   bottom: 22px;
-  z-index: 2;
+  z-index: 4;
   display: grid;
   gap: 3px;
   text-align: right;
@@ -745,7 +756,8 @@ a {
 
 .technical-ring {
   position: absolute;
-  inset: 54px -6px auto auto;
+  z-index: 0;
+  inset: 92px -28px auto auto;
   display: grid;
   gap: 14px;
   color: var(--quiet);
@@ -753,6 +765,8 @@ a {
   font-size: 0.68rem;
   text-align: right;
   text-transform: uppercase;
+  opacity: 0.34;
+  pointer-events: none;
 }
 
 .intro-band {
@@ -1266,8 +1280,14 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .hero-grid {
+    align-items: center;
+    min-height: auto;
+  }
+
   .shaft-wrap {
     min-height: 440px;
+    height: auto;
   }
 
   .solution-panels,
