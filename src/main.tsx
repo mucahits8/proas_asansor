@@ -301,6 +301,15 @@ function App() {
             <h2>Eski sistemi yalnızca yenilemeyiz; güven, konfor ve süreklilik kazandırırız.</h2>
           </div>
           <div className="before-after" aria-label="Modernizasyon karşılaştırması">
+            <div className="modernization-track" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="modernization-doors" aria-hidden="true">
+              <span />
+              <span />
+            </div>
             <div className="before">
               <span>Mevcut Sistem</span>
               <p>Yıpranmış kullanım hissi, belirsiz performans ve artan bakım ihtiyacı.</p>
