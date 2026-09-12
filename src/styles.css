@@ -30,7 +30,12 @@
   --technical-label: 0.76rem;
   --micro: 0.62rem;
   font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
     sans-serif;
   line-height: 1.5;
   letter-spacing: 0;
@@ -83,7 +88,11 @@ a {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 78% 10%, rgba(214, 161, 0, 0.13), transparent 23rem),
+    radial-gradient(
+      circle at 78% 10%,
+      rgba(214, 161, 0, 0.13),
+      transparent 23rem
+    ),
     linear-gradient(180deg, #fbfaf4, var(--color-paper));
   background-attachment: scroll;
   background-position: center top;
@@ -96,9 +105,18 @@ a {
 
 .site-shell.shell-home {
   background:
-    radial-gradient(circle at 76% 12%, rgba(214, 161, 0, 0.14), transparent 23rem),
-    linear-gradient(90deg, rgba(245, 243, 234, 0.94), rgba(245, 243, 234, 0.74) 46%, rgba(238, 238, 229, 0.92)),
-    image-set(url("/proas-elevator-shaft.png") 1x),
+    radial-gradient(
+      circle at 76% 12%,
+      rgba(214, 161, 0, 0.14),
+      transparent 23rem
+    ),
+    linear-gradient(
+      90deg,
+      rgba(245, 243, 234, 0.94),
+      rgba(245, 243, 234, 0.74) 46%,
+      rgba(238, 238, 229, 0.92)
+    ),
+    image-set(url('/proas-elevator-shaft.png') 1x),
     linear-gradient(180deg, #fbfaf4, #f5f3ea);
   background-position: center top;
   background-size: auto, cover, cover, auto;
@@ -107,8 +125,17 @@ a {
 .site-shell.shell-projects,
 .site-shell.shell-services {
   background:
-    radial-gradient(circle at 78% 14%, rgba(214, 161, 0, 0.1), transparent 24rem),
-    linear-gradient(90deg, rgba(245, 243, 234, 0.97), rgba(245, 243, 234, 0.76) 48%, rgba(236, 235, 225, 0.94)),
+    radial-gradient(
+      circle at 78% 14%,
+      rgba(214, 161, 0, 0.1),
+      transparent 24rem
+    ),
+    linear-gradient(
+      90deg,
+      rgba(245, 243, 234, 0.97),
+      rgba(245, 243, 234, 0.76) 48%,
+      rgba(236, 235, 225, 0.94)
+    ),
     linear-gradient(135deg, #fbfaf4, #e8e8df);
 }
 
@@ -117,13 +144,22 @@ a {
 .site-shell.shell-quote,
 .site-shell.shell-service-request {
   background:
-    radial-gradient(circle at 78% 14%, rgba(214, 161, 0, 0.11), transparent 24rem),
-    linear-gradient(90deg, rgba(245, 243, 234, 0.97), rgba(245, 243, 234, 0.78) 48%, rgba(236, 235, 225, 0.96)),
+    radial-gradient(
+      circle at 78% 14%,
+      rgba(214, 161, 0, 0.11),
+      transparent 24rem
+    ),
+    linear-gradient(
+      90deg,
+      rgba(245, 243, 234, 0.97),
+      rgba(245, 243, 234, 0.78) 48%,
+      rgba(236, 235, 225, 0.96)
+    ),
     linear-gradient(135deg, #fbfaf4, #e8e8df);
 }
 
 .site-shell::before {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0;
   z-index: 0;
@@ -136,14 +172,23 @@ a {
 }
 
 .site-shell::after {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.15) 38%, rgba(247, 248, 244, 0.82)),
-    radial-gradient(circle at 10% 62%, rgba(212, 161, 0, 0.12), transparent 18rem);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.15) 38%,
+      rgba(247, 248, 244, 0.82)
+    ),
+    radial-gradient(
+      circle at 10% 62%,
+      rgba(212, 161, 0, 0.12),
+      transparent 18rem
+    );
 }
 
 .site-shell.lights-off {
@@ -161,20 +206,42 @@ a {
   --steel: #687073;
   --shadow: 0 22px 64px rgba(0, 0, 0, 0.44);
   background:
-    linear-gradient(90deg, rgba(7, 8, 7, 0.98) 0%, rgba(7, 8, 7, 0.74) 42%, rgba(7, 8, 7, 0.92) 100%),
-    image-set(url("/proas-elevator-shaft.png") 1x),
-    radial-gradient(circle at 74% 12%, rgba(242, 183, 5, 0.16), transparent 28rem),
+    linear-gradient(
+      90deg,
+      rgba(7, 8, 7, 0.98) 0%,
+      rgba(7, 8, 7, 0.74) 42%,
+      rgba(7, 8, 7, 0.92) 100%
+    ),
+    image-set(url('/proas-elevator-shaft.png') 1x),
+    radial-gradient(
+      circle at 74% 12%,
+      rgba(242, 183, 5, 0.16),
+      transparent 28rem
+    ),
     linear-gradient(120deg, #050605 0%, #10120f 48%, #070807 100%);
   background-attachment: scroll;
-  background-position: center top, center top, center, center;
+  background-position:
+    center top,
+    center top,
+    center,
+    center;
   background-size: cover, cover, auto, auto;
 }
 
 .site-shell.shell-home.lights-off {
   background:
-    radial-gradient(circle at 76% 12%, rgba(214, 161, 0, 0.18), transparent 22rem),
-    linear-gradient(90deg, rgba(7, 8, 7, 0.96), rgba(7, 8, 7, 0.7) 44%, rgba(7, 8, 7, 0.9)),
-    image-set(url("/proas-elevator-shaft.png") 1x),
+    radial-gradient(
+      circle at 76% 12%,
+      rgba(214, 161, 0, 0.18),
+      transparent 22rem
+    ),
+    linear-gradient(
+      90deg,
+      rgba(7, 8, 7, 0.96),
+      rgba(7, 8, 7, 0.7) 44%,
+      rgba(7, 8, 7, 0.9)
+    ),
+    image-set(url('/proas-elevator-shaft.png') 1x),
     linear-gradient(180deg, #11130f, #050605);
   background-position: center top;
   background-size: auto, cover, cover, auto;
@@ -188,8 +255,17 @@ a {
 
 .site-shell.lights-off::after {
   background:
-    linear-gradient(90deg, rgba(7, 8, 7, 0.62), transparent 46%, rgba(7, 8, 7, 0.32)),
-    radial-gradient(circle at 64% 16%, rgba(242, 183, 5, 0.1), transparent 22rem);
+    linear-gradient(
+      90deg,
+      rgba(7, 8, 7, 0.62),
+      transparent 46%,
+      rgba(7, 8, 7, 0.32)
+    ),
+    radial-gradient(
+      circle at 64% 16%,
+      rgba(242, 183, 5, 0.1),
+      transparent 22rem
+    );
 }
 
 .light-transition {
@@ -450,6 +526,8 @@ a {
 }
 
 .site-rail {
+  --rail-height: min(44vh, 392px);
+  --rail-travel: calc(var(--rail-height) - 36px);
   position: fixed;
   top: 50%;
   left: clamp(16px, 2vw, 34px);
@@ -462,11 +540,28 @@ a {
   pointer-events: none;
 }
 
+.rail-context {
+  grid-column: 1 / -1;
+  margin: 0 0 12px 34px;
+  color: color-mix(in srgb, var(--accent) 78%, transparent);
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .rail-line {
   position: relative;
-  height: min(44vh, 392px);
+  height: var(--rail-height);
   width: 1px;
-  background: linear-gradient(180deg, transparent, var(--line-strong), transparent);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--line-strong),
+    transparent
+  );
   pointer-events: auto;
 }
 
@@ -478,7 +573,7 @@ a {
   width: 28px;
   height: 36px;
   place-items: center;
-  transform: translate(-50%, calc(var(--scroll-progress) * 356px));
+  transform: translate(-50%, calc(var(--scroll-progress) * var(--rail-travel)));
   border: 1px solid color-mix(in srgb, var(--accent) 78%, transparent);
   border-radius: 5px;
   background: color-mix(in srgb, var(--accent) 12%, transparent);
@@ -493,10 +588,10 @@ a {
 
 .rail-floors {
   display: grid;
-  height: min(44vh, 392px);
+  height: var(--rail-height);
   align-content: space-between;
   gap: 0;
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.76rem;
   text-transform: uppercase;
   pointer-events: auto;
@@ -516,7 +611,7 @@ a {
 }
 
 .rail-floors a::before {
-  content: "";
+  content: '';
   width: 7px;
   height: 7px;
   margin-right: 9px;
@@ -562,6 +657,10 @@ a {
   opacity: 1;
 }
 
+[id] {
+  scroll-margin-top: 132px;
+}
+
 .hero {
   min-height: 92svh;
   display: grid;
@@ -572,8 +671,17 @@ a {
 
 .cinematic {
   background:
-    linear-gradient(90deg, rgba(250, 249, 242, 0.86), rgba(250, 249, 242, 0.58) 48%, rgba(244, 242, 232, 0.92)),
-    radial-gradient(circle at 70% 12%, rgba(214, 161, 0, 0.12), transparent 26rem);
+    linear-gradient(
+      90deg,
+      rgba(250, 249, 242, 0.86),
+      rgba(250, 249, 242, 0.58) 48%,
+      rgba(244, 242, 232, 0.92)
+    ),
+    radial-gradient(
+      circle at 70% 12%,
+      rgba(214, 161, 0, 0.12),
+      transparent 26rem
+    );
   color: var(--ink);
 }
 
@@ -592,8 +700,17 @@ a {
 
 .lights-off .cinematic {
   background:
-    linear-gradient(90deg, rgba(7, 8, 7, 0.88), rgba(7, 8, 7, 0.58) 52%, rgba(7, 8, 7, 0.9)),
-    radial-gradient(circle at 70% 12%, rgba(242, 183, 5, 0.12), transparent 26rem);
+    linear-gradient(
+      90deg,
+      rgba(7, 8, 7, 0.88),
+      rgba(7, 8, 7, 0.58) 52%,
+      rgba(7, 8, 7, 0.9)
+    ),
+    radial-gradient(
+      circle at 70% 12%,
+      rgba(242, 183, 5, 0.12),
+      transparent 26rem
+    );
   color: #fbf8ef;
 }
 
@@ -623,14 +740,34 @@ a {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.52), transparent 42%, rgba(255, 255, 255, 0.78)),
-    repeating-linear-gradient(90deg, transparent 0, transparent 98px, rgba(17, 19, 15, 0.03) 99px);
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.52),
+      transparent 42%,
+      rgba(255, 255, 255, 0.78)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 98px,
+      rgba(17, 19, 15, 0.03) 99px
+    );
 }
 
 .lights-off .hero-noise {
   background:
-    linear-gradient(90deg, rgba(7, 8, 7, 0.55), transparent 48%, rgba(7, 8, 7, 0.22)),
-    repeating-linear-gradient(90deg, transparent 0, transparent 98px, rgba(248, 245, 234, 0.035) 99px);
+    linear-gradient(
+      90deg,
+      rgba(7, 8, 7, 0.55),
+      transparent 48%,
+      rgba(7, 8, 7, 0.22)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 98px,
+      rgba(248, 245, 234, 0.035) 99px
+    );
 }
 
 .door {
@@ -665,7 +802,7 @@ a {
 .kicker {
   margin: 0 0 16px;
   color: var(--accent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.76rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -758,7 +895,7 @@ a {
 }
 
 .hero-tags span::before {
-  content: "";
+  content: '';
   width: 9px;
   height: 9px;
   border-radius: 99px;
@@ -781,8 +918,19 @@ a {
   border: 0;
   border-radius: 8px;
   background:
-    linear-gradient(90deg, transparent 0 22%, color-mix(in srgb, var(--accent) 28%, transparent) 22.2% 22.6%, transparent 22.8% 77%, color-mix(in srgb, var(--accent) 28%, transparent) 77.2% 77.6%, transparent 77.8%),
-    repeating-linear-gradient(0deg, transparent 0 88px, rgba(17, 19, 15, 0.07) 89px),
+    linear-gradient(
+      90deg,
+      transparent 0 22%,
+      color-mix(in srgb, var(--accent) 28%, transparent) 22.2% 22.6%,
+      transparent 22.8% 77%,
+      color-mix(in srgb, var(--accent) 28%, transparent) 77.2% 77.6%,
+      transparent 77.8%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 88px,
+      rgba(17, 19, 15, 0.07) 89px
+    ),
     transparent;
   box-shadow: none;
   backdrop-filter: none;
@@ -812,13 +960,18 @@ a {
 
 .shaft::before,
 .shaft::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   z-index: 1;
   width: 2px;
-  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent) 36%, transparent), transparent);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 36%, transparent),
+    transparent
+  );
   opacity: 0.74;
 }
 
@@ -838,7 +991,14 @@ a {
   border: 1px solid color-mix(in srgb, var(--line-strong) 92%, var(--ink));
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(230, 236, 232, 0.88) 18%, rgba(255, 255, 255, 0.96) 50%, rgba(214, 223, 218, 0.9) 82%, rgba(255, 255, 255, 0.98)),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(230, 236, 232, 0.88) 18%,
+      rgba(255, 255, 255, 0.96) 50%,
+      rgba(214, 223, 218, 0.9) 82%,
+      rgba(255, 255, 255, 0.98)
+    ),
     linear-gradient(180deg, #ffffff, #e2e9e5);
   box-shadow:
     0 26px 82px rgba(32, 38, 34, 0.18),
@@ -852,7 +1012,7 @@ a {
 
 .cabin::before,
 .cabin::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -861,9 +1021,23 @@ a {
 
 .cabin::before {
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.42), transparent 14%, transparent 86%, rgba(255, 255, 255, 0.5)),
-    repeating-linear-gradient(90deg, transparent 0 86px, rgba(17, 19, 15, 0.045) 87px),
-    repeating-linear-gradient(0deg, transparent 0 112px, rgba(17, 19, 15, 0.048) 113px);
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.42),
+      transparent 14%,
+      transparent 86%,
+      rgba(255, 255, 255, 0.5)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 86px,
+      rgba(17, 19, 15, 0.045) 87px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 112px,
+      rgba(17, 19, 15, 0.048) 113px
+    );
 }
 
 .cabin::after {
@@ -892,7 +1066,7 @@ a {
   background: rgba(255, 255, 255, 0.74);
   padding: 6px 14px;
   color: #9f7900;
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.7rem;
   font-weight: 950;
 }
@@ -904,7 +1078,7 @@ a {
   z-index: 3;
   transform: translateX(-50%);
   color: color-mix(in srgb, var(--quiet) 80%, transparent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.58rem;
   font-weight: 850;
   letter-spacing: 0.02em;
@@ -915,9 +1089,24 @@ a {
   position: absolute;
   inset: 82px 10px 14px;
   background:
-    radial-gradient(circle at 50% 24%, rgba(243, 196, 25, 0.36), transparent 28%),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.72), transparent 22%, rgba(255, 255, 255, 0.58) 50%, transparent 78%, rgba(255, 255, 255, 0.76)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.18));
+    radial-gradient(
+      circle at 50% 24%,
+      rgba(243, 196, 25, 0.36),
+      transparent 28%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.72),
+      transparent 22%,
+      rgba(255, 255, 255, 0.58) 50%,
+      transparent 78%,
+      rgba(255, 255, 255, 0.76)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.86),
+      rgba(255, 255, 255, 0.18)
+    );
   opacity: 0.22;
   transition: opacity 240ms ease;
 }
@@ -928,8 +1117,18 @@ a {
   z-index: 2;
   overflow: hidden;
   background:
-    linear-gradient(90deg, transparent calc(50% - 1px), rgba(17, 19, 15, 0.16) 50%, transparent calc(50% + 1px)),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.22), transparent, rgba(255, 255, 255, 0.18));
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 1px),
+      rgba(17, 19, 15, 0.16) 50%,
+      transparent calc(50% + 1px)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.22),
+      transparent,
+      rgba(255, 255, 255, 0.18)
+    );
 }
 
 .cabin-doors span {
@@ -938,8 +1137,17 @@ a {
   bottom: 0;
   width: 50.5%;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.82), transparent 35%, rgba(96, 106, 99, 0.16)),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 74px),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.82),
+      transparent 35%,
+      rgba(96, 106, 99, 0.16)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.08) 0 1px,
+      transparent 1px 74px
+    ),
     linear-gradient(180deg, #f8faf7, #bfcac4);
   transition: transform 260ms var(--ease-door);
 }
@@ -960,7 +1168,12 @@ a {
   z-index: 4;
   height: 14px;
   background:
-    linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 30%, transparent), transparent),
+    linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--accent) 30%, transparent),
+      transparent
+    ),
     linear-gradient(180deg, rgba(17, 19, 15, 0.08), rgba(17, 19, 15, 0.2));
 }
 
@@ -988,7 +1201,7 @@ a {
   gap: 3px;
   text-align: right;
   color: var(--quiet);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
 
 .floor-readout small {
@@ -1014,7 +1227,7 @@ a {
   display: grid;
   gap: 14px;
   color: var(--quiet);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.68rem;
   text-align: right;
   text-transform: uppercase;
@@ -1034,7 +1247,11 @@ a {
 .shell-home .contact {
   border-block: 1px solid var(--line);
   background:
-    radial-gradient(circle at 82% 10%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 22rem),
+    radial-gradient(
+      circle at 82% 10%,
+      color-mix(in srgb, var(--accent) 8%, transparent),
+      transparent 22rem
+    ),
     color-mix(in srgb, var(--panel-solid) 88%, transparent);
 }
 
@@ -1132,8 +1349,16 @@ a {
   border: 1px solid var(--line);
   border-radius: 8px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.42), color-mix(in srgb, var(--accent) 8%, transparent)),
-    repeating-linear-gradient(90deg, transparent 0 48px, rgba(17, 19, 15, 0.045) 49px),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.42),
+      color-mix(in srgb, var(--accent) 8%, transparent)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 48px,
+      rgba(17, 19, 15, 0.045) 49px
+    ),
     color-mix(in srgb, var(--panel-solid) 78%, transparent);
   box-shadow: 0 18px 55px rgba(32, 38, 34, 0.07);
   padding: 28px;
@@ -1148,16 +1373,24 @@ a {
 }
 
 .solution-panel::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 72px 20px auto 20px;
   height: 104px;
   border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
   border-radius: 6px;
   background:
-    radial-gradient(circle at 72% 20%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 36%),
+    radial-gradient(
+      circle at 72% 20%,
+      color-mix(in srgb, var(--accent) 18%, transparent),
+      transparent 36%
+    ),
     linear-gradient(120deg, rgba(255, 255, 255, 0.55), transparent),
-    repeating-linear-gradient(0deg, rgba(17, 19, 15, 0.055) 0 1px, transparent 1px 22px);
+    repeating-linear-gradient(
+      0deg,
+      rgba(17, 19, 15, 0.055) 0 1px,
+      transparent 1px 22px
+    );
   opacity: 0.72;
   transition:
     transform 200ms var(--ease-lift),
@@ -1166,7 +1399,11 @@ a {
 
 .solution-panel:hover {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), color-mix(in srgb, var(--accent) 16%, transparent)),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16),
+      color-mix(in srgb, var(--accent) 16%, transparent)
+    ),
     rgba(255, 255, 255, 0.56);
   transform: translateY(-4px);
 }
@@ -1178,7 +1415,7 @@ a {
 
 .solution-panel > span {
   color: var(--accent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.82rem;
   font-weight: 950;
 }
@@ -1186,7 +1423,7 @@ a {
 .solution-panel p {
   margin: 0 0 12px;
   color: var(--quiet);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.7rem;
   text-transform: uppercase;
 }
@@ -1252,17 +1489,25 @@ a {
   border: 1px dashed color-mix(in srgb, var(--accent) 34%, transparent);
   border-radius: 6px;
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--accent) 13%, transparent), transparent),
-    repeating-linear-gradient(90deg, transparent 0 17px, rgba(17, 19, 15, 0.05) 18px);
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent) 13%, transparent),
+      transparent
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 17px,
+      rgba(17, 19, 15, 0.05) 18px
+    );
   color: color-mix(in srgb, var(--quiet) 72%, transparent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: var(--micro);
   font-weight: 900;
   text-transform: uppercase;
 }
 
 .service-card::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -1287,14 +1532,19 @@ a {
 }
 
 .lifecycle-flow::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 7%;
   right: 7%;
   top: 50%;
   z-index: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 46%, transparent), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 46%, transparent),
+    transparent
+  );
 }
 
 .lifecycle-step {
@@ -1306,8 +1556,16 @@ a {
   border: 1px solid var(--line);
   border-radius: 8px;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--panel-solid) 88%, transparent), color-mix(in srgb, var(--panel-solid) 70%, transparent)),
-    repeating-linear-gradient(0deg, transparent 0 54px, rgba(17, 19, 15, 0.045) 55px);
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--panel-solid) 88%, transparent),
+      color-mix(in srgb, var(--panel-solid) 70%, transparent)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 54px,
+      rgba(17, 19, 15, 0.045) 55px
+    );
   box-shadow: 0 18px 55px rgba(32, 38, 34, 0.07);
   padding: 24px;
   transition:
@@ -1322,7 +1580,7 @@ a {
 
 .lifecycle-step > span {
   color: var(--accent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.82rem;
   font-weight: 950;
 }
@@ -1433,7 +1691,7 @@ a {
 
 .floor-card span {
   color: var(--accent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 1.6rem;
   font-weight: 950;
 }
@@ -1452,7 +1710,11 @@ a {
 .modernization {
   border-block: 1px solid var(--line);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.78), color-mix(in srgb, var(--accent) 8%, transparent)),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.78),
+      color-mix(in srgb, var(--accent) 8%, transparent)
+    ),
     rgba(255, 255, 255, 0.58);
 }
 
@@ -1476,13 +1738,23 @@ a {
   border: 1px solid var(--line-strong);
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(236, 240, 235, 0.94), rgba(220, 226, 221, 0.86) 49%, rgba(247, 250, 247, 0.96) 51%, rgba(224, 237, 230, 0.88)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(214, 224, 218, 0.48));
+    linear-gradient(
+      90deg,
+      rgba(236, 240, 235, 0.94),
+      rgba(220, 226, 221, 0.86) 49%,
+      rgba(247, 250, 247, 0.96) 51%,
+      rgba(224, 237, 230, 0.88)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.78),
+      rgba(214, 224, 218, 0.48)
+    );
   box-shadow: var(--shadow);
 }
 
 .before-after::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -1490,22 +1762,36 @@ a {
   border: 1px solid rgba(17, 19, 15, 0.08);
   border-radius: 6px;
   background:
-    radial-gradient(circle at 50% 20%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 24%),
-    linear-gradient(90deg, transparent 0 22%, rgba(255, 255, 255, 0.42) 34%, transparent 50%);
+    radial-gradient(
+      circle at 50% 20%,
+      color-mix(in srgb, var(--accent) 16%, transparent),
+      transparent 24%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0 22%,
+      rgba(255, 255, 255, 0.42) 34%,
+      transparent 50%
+    );
   opacity: 0.58;
   animation: modernization-scan 4.4s var(--ease-lift) infinite;
   pointer-events: none;
 }
 
 .before-after::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   left: 50%;
   z-index: 2;
   width: 1px;
-  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent) 82%, transparent), transparent);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 82%, transparent),
+    transparent
+  );
   box-shadow:
     -46px 0 0 color-mix(in srgb, var(--accent) 34%, transparent),
     46px 0 0 color-mix(in srgb, var(--accent) 34%, transparent);
@@ -1526,8 +1812,17 @@ a {
 .modernization-track span {
   border-right: 1px solid var(--line);
   background:
-    repeating-linear-gradient(0deg, transparent 0 56px, rgba(17, 19, 15, 0.06) 57px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 42%, rgba(255, 255, 255, 0.2));
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 56px,
+      rgba(17, 19, 15, 0.06) 57px
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.24),
+      transparent 42%,
+      rgba(255, 255, 255, 0.2)
+    );
 }
 
 .modernization-doors {
@@ -1541,8 +1836,17 @@ a {
 
 .modernization-doors span {
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.72), rgba(202, 214, 207, 0.26) 44%, rgba(255, 255, 255, 0.72)),
-    repeating-linear-gradient(0deg, transparent 0 84px, rgba(255, 255, 255, 0.26) 85px);
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.72),
+      rgba(202, 214, 207, 0.26) 44%,
+      rgba(255, 255, 255, 0.72)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 84px,
+      rgba(255, 255, 255, 0.26) 85px
+    );
   transition: transform 280ms var(--ease-door);
   animation: modernization-door-pulse 4.4s var(--ease-door) infinite;
 }
@@ -1589,7 +1893,7 @@ a {
 .before span,
 .after span {
   color: #9f7900;
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.78rem;
   font-weight: 950;
   text-transform: uppercase;
@@ -1657,7 +1961,7 @@ a {
   color: #fbf8ef;
   background:
     linear-gradient(90deg, rgba(7, 8, 7, 0.92), rgba(7, 8, 7, 0.68)),
-    image-set(url("/proas-elevator-shaft.png") 1x);
+    image-set(url('/proas-elevator-shaft.png') 1x);
   background-size: cover;
   background-position: center;
 }
@@ -1741,8 +2045,17 @@ a {
   border: 1px solid var(--line-strong);
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.62), rgba(214, 224, 218, 0.42), rgba(255, 255, 255, 0.78)),
-    repeating-linear-gradient(0deg, transparent 0 74px, rgba(17, 19, 15, 0.06) 75px);
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.62),
+      rgba(214, 224, 218, 0.42),
+      rgba(255, 255, 255, 0.78)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 74px,
+      rgba(17, 19, 15, 0.06) 75px
+    );
   box-shadow: var(--shadow);
 }
 
@@ -1766,7 +2079,7 @@ a {
 .mini-shaft small {
   position: absolute;
   left: 28px;
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
 
 .mini-shaft strong {
@@ -1837,7 +2150,7 @@ a {
 .project-module > span,
 .service-number {
   color: var(--accent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-size: 0.82rem;
   font-weight: 950;
 }
@@ -1850,8 +2163,16 @@ a {
   border: 1px solid color-mix(in srgb, var(--line-strong) 72%, transparent);
   border-radius: 6px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.24), color-mix(in srgb, var(--accent) 8%, transparent)),
-    repeating-linear-gradient(90deg, transparent 0 28px, rgba(17, 19, 15, 0.04) 29px);
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.24),
+      color-mix(in srgb, var(--accent) 8%, transparent)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 28px,
+      rgba(17, 19, 15, 0.04) 29px
+    );
   color: var(--quiet);
 }
 
@@ -1967,7 +2288,11 @@ a {
 .knowledge-section {
   border-block: 1px solid var(--line);
   background:
-    radial-gradient(circle at 18% 18%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 24rem),
+    radial-gradient(
+      circle at 18% 18%,
+      color-mix(in srgb, var(--accent) 7%, transparent),
+      transparent 24rem
+    ),
     color-mix(in srgb, var(--panel-solid) 78%, transparent);
 }
 
@@ -2008,13 +2333,17 @@ a {
 .network-card {
   min-height: 180px;
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent) 9%, transparent),
+      transparent
+    ),
     color-mix(in srgb, var(--panel-solid) 78%, transparent);
 }
 
 .network-card span {
   color: var(--accent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-weight: 950;
   text-transform: uppercase;
 }
@@ -2055,16 +2384,28 @@ a {
   border: 1px solid var(--line-strong);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.82), color-mix(in srgb, var(--accent) 8%, transparent)),
-    repeating-linear-gradient(90deg, transparent 0 42px, rgba(17, 19, 15, 0.04) 43px),
-    repeating-linear-gradient(0deg, transparent 0 58px, rgba(17, 19, 15, 0.04) 59px);
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.82),
+      color-mix(in srgb, var(--accent) 8%, transparent)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 42px,
+      rgba(17, 19, 15, 0.04) 43px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 58px,
+      rgba(17, 19, 15, 0.04) 59px
+    );
   box-shadow: var(--shadow);
   color: var(--muted);
   text-align: center;
 }
 
 .corporate-asset::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 22px;
   border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
@@ -2079,7 +2420,7 @@ a {
 .corporate-asset span,
 .corporate-asset small {
   position: absolute;
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-weight: 950;
   text-transform: uppercase;
 }
@@ -2103,7 +2444,7 @@ a {
 .document-card small,
 .asset-placeholder small {
   color: var(--accent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-weight: 950;
 }
 
@@ -2130,7 +2471,7 @@ a {
 
 .article-grid span {
   color: var(--accent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-weight: 950;
 }
 
@@ -2171,7 +2512,7 @@ a {
 
 .wizard-step span {
   color: var(--accent);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   font-weight: 950;
 }
 
@@ -2219,8 +2560,11 @@ a {
 
 .issue-grid button.is-selected {
   border-color: color-mix(in srgb, var(--accent) 68%, transparent);
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--accent) 18%, transparent), color-mix(in srgb, var(--panel-solid) 78%, transparent));
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 18%, transparent),
+    color-mix(in srgb, var(--panel-solid) 78%, transparent)
+  );
   color: var(--ink);
 }
 
