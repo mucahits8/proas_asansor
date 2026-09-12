@@ -589,22 +589,7 @@ function App() {
     const setProgress = () => {
       const max = document.body.scrollHeight - window.innerHeight;
       const progress = max > 0 ? window.scrollY / max : 0;
-      const hero = document.getElementById('hero');
-      const heroRect = hero?.getBoundingClientRect();
-      const heroProgress = heroRect
-        ? Math.min(
-            1,
-            Math.max(0, -heroRect.top / Math.max(1, heroRect.height * 0.55)),
-          )
-        : 0;
       root.style.setProperty('--scroll-progress', String(progress));
-      root.style.setProperty('--hero-cabin-lift', `${heroProgress * -18}px`);
-      root.style.setProperty('--hero-door-left', `${heroProgress * -26}%`);
-      root.style.setProperty('--hero-door-right', `${heroProgress * 26}%`);
-      root.style.setProperty(
-        '--hero-light-opacity',
-        String(0.2 + heroProgress * 0.42),
-      );
       root.style.setProperty(
         '--scroll-direction',
         window.scrollY >= lastScrollY ? '1' : '-1',
