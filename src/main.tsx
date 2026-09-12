@@ -56,12 +56,31 @@ const homeRail: RailItem[] = [
 ];
 
 const defaultRail: RailItem[] = [
-  { id: 'overview', number: '00', label: 'Giriş' },
-  { id: 'scope', number: '01', label: 'Kapsam' },
-  { id: 'proof', number: '02', label: 'Kanıt' },
-  { id: 'process', number: '03', label: 'Süreç' },
-  { id: 'documents', number: '04', label: 'Belgeler' },
-  { id: 'cta', number: '05', label: 'Teklif' },
+  { id: 'overview', number: '00', label: 'Giriş Katı' },
+  { id: 'scope', number: '01', label: 'Kapsam Katı' },
+  { id: 'proof', number: '02', label: 'Kanıt Katı' },
+  { id: 'process', number: '03', label: 'Süreç Katı' },
+  { id: 'documents', number: '04', label: 'Belge Katı' },
+  { id: 'cta', number: '05', label: 'Teklif Katı' },
+];
+
+const corporateRail: RailItem[] = [
+  { id: 'overview', number: '00', label: 'Kurumsal Katı' },
+  { id: 'about', number: '01', label: 'PROAS Katı' },
+  { id: 'history', number: '02', label: 'Tarihçe Katı' },
+  { id: 'engineering', number: '03', label: 'Mühendislik Katı' },
+  { id: 'production', number: '04', label: 'Üretim Katı' },
+  { id: 'quality', number: '05', label: 'Kalite Katı' },
+  { id: 'cta', number: '06', label: 'İletişim Katı' },
+];
+
+const maintenanceRail: RailItem[] = [
+  { id: 'overview', number: '00', label: 'Bakım Katı' },
+  { id: 'scope', number: '01', label: 'Kapsam Katı' },
+  { id: 'proof', number: '02', label: 'Güvenlik Katı' },
+  { id: 'process', number: '03', label: 'Süreç Katı' },
+  { id: 'documents', number: '04', label: 'Rapor Katı' },
+  { id: 'cta', number: '05', label: 'Teklif Katı' },
 ];
 
 const navItems = [
@@ -207,6 +226,10 @@ const projectPlaceholders = [
   },
 ];
 
+const solutionSectionIds = ['passenger', 'panoramic', 'health', 'load', 'vehicle', 'access'];
+const serviceSectionIds = ['install', 'maintenance', 'service', 'modernization', 'proposal'];
+const corporateSectionIds = ['scope', 'history', 'engineering', 'production', 'quality'];
+
 const certificates = [
   ['TSE / Hizmet Yeterliliği', 'Belge adı, numarası ve geçerlilik tarihi müşteri verisiyle eklenecek.'],
   ['ISO Kalite Yönetimi', 'Doğrulanmış belge PDF veya görseli yüklendiğinde aktif belge kartına dönüşecek.'],
@@ -238,7 +261,7 @@ const corporatePages: Route[] = [
     eyebrow: 'Kurumsal / Hakkımızda',
     title: 'Dikey ulaşım sistemlerinde kontrollü proje ve servis yaklaşımı.',
     intro: 'PROAS kurumsal anlatısı, tarihçe ve faaliyet kapsamı doğrulanmış şirket verileriyle tamamlanacak.',
-    rail: defaultRail,
+    rail: corporateRail,
   },
   {
     path: '/kurumsal/tarihce',
@@ -246,7 +269,7 @@ const corporatePages: Route[] = [
     eyebrow: 'Kurumsal / Tarihçe',
     title: 'Şirket geçmişi ve kilometre taşları için doğrulanmış veri alanı.',
     intro: 'Kuruluş yılı, büyüme dönemleri ve operasyon bölgeleri müşteri verisiyle yayınlanacak.',
-    rail: defaultRail,
+    rail: corporateRail,
   },
   {
     path: '/kurumsal/muhendislik-yaklasimimiz',
@@ -254,7 +277,7 @@ const corporatePages: Route[] = [
     eyebrow: 'Kurumsal / Mühendislik',
     title: 'Bakım, modernizasyon ve proje yönetimi tek teknik yaklaşımda.',
     intro: 'Süreç, denetim, raporlama ve saha koordinasyonu için kurumsal metodoloji sayfası.',
-    rail: defaultRail,
+    rail: corporateRail,
   },
   {
     path: '/kurumsal/uretim-gucu',
@@ -262,7 +285,7 @@ const corporatePages: Route[] = [
     eyebrow: 'Kurumsal / Üretim',
     title: 'Üretim ve çözüm geliştirme kapasitesi için kanıt katmanı.',
     intro: 'Üretim ilişkisi, tedarik yapısı ve teknik kapasite doğrulanmış materyallerle eklenecek.',
-    rail: defaultRail,
+    rail: corporateRail,
   },
   {
     path: '/kurumsal/kalite',
@@ -270,7 +293,7 @@ const corporatePages: Route[] = [
     eyebrow: 'Kurumsal / Kalite',
     title: 'Standartlar, belgeler ve kontrol süreçleri aynı hatta.',
     intro: 'Kalite belgeleri, periyodik kontrol süreçleri ve servis standardı bu sayfada derlenecek.',
-    rail: defaultRail,
+    rail: corporateRail,
   },
 ];
 
@@ -282,13 +305,13 @@ const routeCopy: Route[] = [
     title: 'Yapıya göre şekillenen asansör sistemleri.',
     intro: 'Konut, sağlık, ticari, otopark ve erişilebilirlik ihtiyaçları için doğru sistem seçimini ayrı sayfalara ayırdık.',
     rail: [
-      { id: 'overview', number: '00', label: 'Çözümler' },
-      { id: 'passenger', number: '01', label: 'Yolcu' },
-      { id: 'panoramic', number: '02', label: 'Panoramik' },
-      { id: 'health', number: '03', label: 'Sağlık' },
-      { id: 'load', number: '04', label: 'Yük' },
-      { id: 'vehicle', number: '05', label: 'Araç' },
-      { id: 'access', number: '06', label: 'Erişim' },
+      { id: 'overview', number: '00', label: 'Çözümler Katı' },
+      { id: 'passenger', number: '01', label: 'Yolcu Katı' },
+      { id: 'panoramic', number: '02', label: 'Panoramik Katı' },
+      { id: 'health', number: '03', label: 'Sağlık Katı' },
+      { id: 'load', number: '04', label: 'Yük Katı' },
+      { id: 'vehicle', number: '05', label: 'Araç Katı' },
+      { id: 'access', number: '06', label: 'Erişim Katı' },
     ],
   },
   {
@@ -298,12 +321,12 @@ const routeCopy: Route[] = [
     title: 'Kurulumdan sistem ömrü boyunca teknik destek.',
     intro: 'Yeni kurulum, bakım, arıza servisi, modernizasyon ve projelendirme artık ayrı hizmet sayfalarına açılıyor.',
     rail: [
-      { id: 'overview', number: '00', label: 'Hizmetler' },
-      { id: 'install', number: '01', label: 'Kurulum' },
-      { id: 'maintenance', number: '02', label: 'Bakım' },
-      { id: 'service', number: '03', label: 'Servis' },
-      { id: 'modernization', number: '04', label: 'Revizyon' },
-      { id: 'proposal', number: '05', label: 'Teklif' },
+      { id: 'overview', number: '00', label: 'Hizmetler Katı' },
+      { id: 'install', number: '01', label: 'Kurulum Katı' },
+      { id: 'maintenance', number: '02', label: 'Bakım Katı' },
+      { id: 'service', number: '03', label: 'Servis Katı' },
+      { id: 'modernization', number: '04', label: 'Revizyon Katı' },
+      { id: 'proposal', number: '05', label: 'Teklif Katı' },
     ],
   },
   {
@@ -312,16 +335,15 @@ const routeCopy: Route[] = [
     eyebrow: '03 — Projeler',
     title: 'Gerçek proje kanıtları için güçlü bir modül.',
     intro: 'Bu alan gerçek fotoğraf, lokasyon, sektör, kapsam ve teknik detaylar geldiğinde case study sayfalarına dönüşecek.',
-    theme: 'dark',
     rail: defaultRail,
   },
   {
     path: '/kurumsal',
     label: 'Kurumsal',
     eyebrow: '04 — Kurumsal',
-    title: 'PROAS’ın kurumsal güven katmanını görünür kılan yapı.',
-    intro: 'Hakkımızda, tarihçe, mühendislik yaklaşımı, üretim gücü ve kalite sayfaları için merkez sayfa.',
-    rail: defaultRail,
+    title: 'Mühendislikten gelen kurumsal güven.',
+    intro: 'PROAS’ın geçmişini, mühendislik yaklaşımını, kalite anlayışını ve üretim gücünü keşfedin.',
+    rail: corporateRail,
   },
   {
     path: '/referanslar',
@@ -368,7 +390,8 @@ function App() {
   const isHome = path === '/';
   const route = getRoute(path);
   const pageRail = isHome ? homeRail : route.rail;
-  const shellMode = isHome && !lightsOn ? 'lights-off' : route.theme === 'dark' ? 'lights-off' : 'lights-on';
+  const shellMode = lightsOn ? 'lights-on' : 'lights-off';
+  const shellArea = getShellArea(path);
 
   React.useEffect(() => {
     const onPopState = () => {
@@ -454,7 +477,7 @@ function App() {
   };
 
   return (
-    <main className={`site-shell ${shellMode} ${isSwitchingLights ? 'is-switching-lights' : ''} ${isChangingPage ? 'is-changing-page' : ''}`}>
+    <main className={`site-shell shell-${shellArea} ${shellMode} ${isSwitchingLights ? 'is-switching-lights' : ''} ${isChangingPage ? 'is-changing-page' : ''}`}>
       <div className="light-transition" aria-hidden="true">
         <span />
         <span />
@@ -748,8 +771,8 @@ function SolutionGrid({
 }) {
   return (
     <div className="container solution-panels">
-      {items.map((item) => (
-        <SiteLink className="solution-panel" key={item.title} to={item.path} onNavigate={navigate}>
+      {items.map((item, index) => (
+        <SiteLink className="solution-panel" id={solutionSectionIds[index]} key={item.title} to={item.path} onNavigate={navigate}>
           <span>{item.number}</span>
           <div>
             <p>{item.tag}</p>
@@ -766,10 +789,10 @@ function SolutionGrid({
 function ServiceGrid({ navigate }: { navigate: (path: string) => void }) {
   return (
     <div className="container service-grid">
-      {services.map((service) => {
+      {services.map((service, index) => {
         const Icon = service.icon;
         return (
-          <SiteLink className="service-card" key={service.title} to={service.path} onNavigate={navigate}>
+          <SiteLink className="service-card" id={serviceSectionIds[index]} key={service.title} to={service.path} onNavigate={navigate}>
             <span className="service-number">{service.number}</span>
             <div className="service-image-slot" aria-hidden="true">
               Görsel alanı
@@ -937,16 +960,38 @@ function ProjectDetail({ project, navigate }: { project: (typeof projectPlacehol
 function CorporateIndex({ route, navigate }: { route: Route; navigate: (path: string) => void }) {
   return (
     <>
-      <PageHero route={route} />
-      <section className="section" id="scope">
+      <section className="section page-hero corporate-hero" id="overview">
+        <div className="container page-hero-grid">
+          <div>
+            <p className="eyebrow">{route.eyebrow}</p>
+            <h1>{route.title}</h1>
+            <p>{route.intro}</p>
+          </div>
+          <div className="corporate-asset">
+            <Factory aria-hidden="true" />
+            <span>EKİP / OFİS / ÜRETİM GÖRSELİ</span>
+            <small>PLACEHOLDER ASSET</small>
+          </div>
+        </div>
+      </section>
+      <section className="section corporate-flow section-compact" id="about">
         <div className="container corporate-links">
-          {corporatePages.map((page) => (
-            <SiteLink key={page.path} to={page.path} onNavigate={navigate}>
+          {corporatePages.map((page, index) => (
+            <SiteLink id={index === 0 ? undefined : corporateSectionIds[index]} key={page.path} to={page.path} onNavigate={navigate}>
               <span>{page.label}</span>
               <p>{page.intro}</p>
               <ArrowUpRight aria-hidden="true" />
             </SiteLink>
           ))}
+        </div>
+      </section>
+      <section className="section proof-band" id="method">
+        <div className="container split-heading">
+          <div>
+            <p className="eyebrow">Mühendislik Yaklaşımı</p>
+            <h2>Kontrollü proje yönetimi, düzenli bakım ve net raporlama.</h2>
+          </div>
+          <p>Kurumsal anlatı gerçek ekip, belge ve saha materyali geldikçe güçlendirilecek.</p>
         </div>
       </section>
       <TrustLayer />
@@ -1084,6 +1129,7 @@ function QuoteWizard({ navigate }: { navigate: (path: string) => void }) {
 }
 
 function ServiceRequest({ navigate }: { navigate: (path: string) => void }) {
+  const [selectedIssue, setSelectedIssue] = React.useState('Asansör çalışmıyor');
   const items = ['Asansör çalışmıyor', 'Kapı problemi', 'Ses / titreşim', 'Kat seviye problemi', 'Bakım talebi', 'Diğer'];
 
   return (
@@ -1093,8 +1139,13 @@ function ServiceRequest({ navigate }: { navigate: (path: string) => void }) {
         <div className="container request-grid">
           <div className="issue-grid">
             {items.map((item) => (
-              <button key={item} type="button">
-                <LifeBuoy aria-hidden="true" /> {item}
+              <button
+                className={selectedIssue === item ? 'is-selected' : undefined}
+                key={item}
+                type="button"
+                onClick={() => setSelectedIssue(item)}
+              >
+                {selectedIssue === item ? <CheckCircle2 aria-hidden="true" /> : <LifeBuoy aria-hidden="true" />} {item}
               </button>
             ))}
           </div>
@@ -1381,7 +1432,7 @@ function getRoute(path: string): Route {
       eyebrow: `Hizmet / ${service.number}`,
       title: service.title,
       intro: service.copy,
-      rail: defaultRail,
+      rail: service.path === '/hizmetler/bakim-servis' ? maintenanceRail : defaultRail,
     };
   }
 
@@ -1405,6 +1456,17 @@ function getRoute(path: string): Route {
     intro: 'Ana sayfaya dönün.',
     rail: defaultRail,
   };
+}
+
+function getShellArea(path: string) {
+  if (path === '/') return 'home';
+  if (path.startsWith('/projeler')) return 'projects';
+  if (path.startsWith('/kurumsal')) return 'corporate';
+  if (path.startsWith('/hizmetler')) return 'services';
+  if (path.startsWith('/cozumler')) return 'solutions';
+  if (path.startsWith('/servis-talebi')) return 'service-request';
+  if (path.startsWith('/teklif-al')) return 'quote';
+  return 'standard';
 }
 
 function normalizePath(value: string) {
